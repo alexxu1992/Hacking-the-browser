@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name":"focus",
+  "version": "0.1",
+
+  "icons":{
+    "128":"focus_logo1.png"
+  },
+
+  "browser_action":{
+    "default_icon":{
+      "128": "focus_logo1.png"
+    },
+    "default_title": "focus",
+    "default_popup":"popup.html"
+  },
+
+  "permissions":[
+    "storage",
+    "tabs"
+  ],
+
+  "commands":{
+    "toggle-feature-foo": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+K"
+        },
+        "description": "jump to expage"
+      }
+   },
+
+  "content_scripts":[
+    {
+      "matches" : ["<all_urls>"],
+      "css":["css/mystyle.css", "css/jquery-ui.min.css"],
+      "js":[ "library/jquery-3.1.1.min.js", "library/jquery-ui.min.js", "library/jquery.resize.js","js/content.js", "js/bar.js"]
+    }
+  ],
+
+  "background":{
+    "scripts":["js/background.js"],
+    "persistent":false
+  }
+}
